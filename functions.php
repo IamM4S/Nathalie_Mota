@@ -16,7 +16,7 @@ function nm_theme_assets() {
     wp_enqueue_style('style', get_stylesheet_uri(), array(), '1.0');
 
     //Declare the CSS file in another location
-    wp_enqueue_style('css', get_stylesheet_uri() . '/css/main.css', array(), '1.0');
+    wp_enqueue_style('css', get_template_directory_uri() . '/css/main.css', array(), '1.0');
 
 }
 add_action('wp_enqueue_scripts' , 'nm_theme_assets');
