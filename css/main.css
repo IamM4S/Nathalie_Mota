@@ -5,6 +5,7 @@ body {
     padding: 0;
 }
 
+/* Desktop Header */
 .site__header {
     display: flex;
     justify-content: space-between;
@@ -25,6 +26,34 @@ body {
 }
 
 .site__header__menu a {
+    text-decoration: none;
+    font-family: Space Mono;
+    font-weight: 400;
+    line-height: 23.7px;
+    color: rgba(0, 0, 0, 1);
+}
+
+/* Desktop Footer */
+.site__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 146px 0px 146px;
+    height: 40px;
+}
+
+.site__footer .site__footer__menu {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 0;
+    column-gap: 4em;
+}
+
+.site__footer__menu li {
+    list-style-type: none;
+}
+
+.site__footer__menu a {
     text-decoration: none;
     font-family: Space Mono;
     font-weight: 400;
