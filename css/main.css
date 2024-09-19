@@ -1,0 +1,33 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.site__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 146px 0px 146px;
+    height: 80px;
+}
+
+.site__header .site__header__menu {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 0;
+    column-gap: 3em;
+}
+
+.site__header__menu li {
+    list-style-type: none;
+}
+
+.site__header__menu a {
+    text-decoration: none;
+    font-family: Space Mono;
+    font-weight: 400;
+    line-height: 23.7px;
+    color: rgba(0, 0, 0, 1);
+}
