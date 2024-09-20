@@ -32,3 +32,30 @@ register_nav_menus( array (
     'main' => 'Main menu',
     'footer' => 'Footer',
 ));
+
+// Declare a Custom Post Type
+function nm_register_post_types() {
+    // CPT Photos
+    $labels = array (
+        'name' => 'Photos',
+        'all_items' => 'All photos', // displayed in the submenu
+        'singular_name' => 'photo',
+        'add_new_item' => 'Add a photo',
+        'edit_item' => 'Edit photo',
+        'menu_name' => 'Photos'
+    );
+
+    $args = array (
+        'labels' => $labels,
+        'public' => true,
+        'show_in_rest' => true,
+        'has_archive' => true,
+        'supports' => array( 'title', 'editor', 'thumbnail'),
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-format-gallery'
+    );
+
+    register_post_type( 'photos', $args);
+}
+
+add_action( 'init', 'nm_register_post_types' ); // The init hook launches the function

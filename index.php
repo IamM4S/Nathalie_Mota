@@ -1,5 +1,9 @@
 <?php get_header(); ?>
 
-<h1>Hello!</h1>
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>PHOTOGRAPHE EVENT</h1>
+  </div>
+</div>
 
 <?php get_footer(); ?>

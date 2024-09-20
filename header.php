@@ -24,6 +24,8 @@
                     )
                 );
             ?>
-            <?php include get_template_directory() . '/template-parts/contact-modal.php'; // Include an external contact modal file ?>
+            <ul>
+                <li class="btn-modale">CONTACT</li>
+            </ul>
         </nav>
     </header>

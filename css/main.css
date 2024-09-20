@@ -33,6 +33,19 @@ body {
     color: rgba(0, 0, 0, 1);
 }
 
+.links__nav {
+    display: flex;
+}
+
+.links__nav li {
+    list-style-type: none;
+    font-family: Space Mono;
+    font-weight: 400;
+    line-height: 23.7px;
+    color: rgba(0, 0, 0, 1);
+    padding-left: 1em;
+}
+
 /* Desktop Footer */
 .site__footer {
     display: flex;
@@ -59,4 +72,28 @@ body {
     font-weight: 400;
     line-height: 23.7px;
     color: rgba(0, 0, 0, 1);
+}
+
+/* Hero Section */
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://nathalie-mota.local/wp-content/uploads/2024/09/samantha-gades-fIHozNWfcvs-unsplash-1.png");
+    height: 962px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hero-text h1 {
+    font-family: Space Mono;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 96px;
+    line-height: 142.18px;
+    color: rgba(255, 255, 255, 1);
+    margin: 0;
 }
