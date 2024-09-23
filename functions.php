@@ -9,7 +9,7 @@ add_theme_support( 'title-tag' );
 // Declare Google Fonts
 function wpb_add_google_fonts() {
   
-    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap', false ); 
+    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap', false ); 
     }
       
     add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );

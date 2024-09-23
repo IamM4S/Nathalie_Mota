@@ -84,11 +84,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: auto;
+    width: 41.46%;
     max-width: 80%;
     height: auto;
     background-color: #fff;
-    padding: 20px;
+    padding: 0;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.8s;
     animation-name: animatetop;
@@ -96,11 +96,36 @@ body {
     animation-timing-function: ease;
 }
 
+.wpcf7 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wpcf7-text {
+    height: 2.5em;
+    width: 98%;
+    border: 1px solid rgba(184, 187, 194, 1);
+    border-radius: 8px;
+}
+
+.wpcf7-textarea {
+    border: 1px solid rgba(184, 187, 194, 1);
+    border-radius: 8px;
+}
+
+.wpcf7-submit {
+    height: 2.5em;
+    width: 100%;
+    border: 1px solid rgba(184, 187, 194, 1);
+    background-color: rgba(216, 216, 216, 1);
+}
+
 .modal-content img {
     display: block;
     width: 100%;
     height: auto;
-    margin-top: 10px;
+    margin-top: 18px;
     margin-left: auto;
     margin-right: auto;
 }
