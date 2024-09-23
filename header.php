@@ -25,7 +25,7 @@
                 );
             ?>
             <ul>
-                <li class="btn-modale">CONTACT</li>
+                <li class="btn-modale"><?php include get_template_directory() . '/template-parts/contact-modal.php';?></li>
             </ul>
         </nav>
     </header>
