@@ -17,7 +17,10 @@ function wpb_add_google_fonts() {
 function nm_theme_assets() {
 
     //Declare the JS
-    wp_enqueue_script('script', get_template_directory_uri() . '/js/script.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '1.0', true);
+
+    //Declare AJAX call
+    wp_localize_script('ajax', 'nm_js', array('ajax_url' => admin_url('admin-ajax.php')));
 
     //Declare the style.css file at the root of the theme
     wp_enqueue_style('style', get_stylesheet_uri(), array(), '1.0');
@@ -32,3 +35,23 @@ register_nav_menus( array (
     'main' => 'Main menu',
     'footer' => 'Footer',
 ));
+
+function nm_request_photos() {
+    $args = array(
+        'post_type' => 'photos',
+        'posts_per_page' => 8
+    );
+
+    $query = new WP_Query($args);
+    if($query->have_posts()) {
+    $response = $query;
+    } else {
+    $response = false;
+    }
+    
+    wp_send_json($response);
+    wp_die();
+    }
+
+add_action('wp_ajax_request_photos', 'nm_request_photos');
+add_action('wp_ajax_nopriv_request_photos', 'nm_request_photos');

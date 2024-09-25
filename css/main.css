@@ -33,6 +33,10 @@ body {
     color: rgba(0, 0, 0, 1);
 }
 
+.site__header__menu a:hover {
+    font-weight: 700;
+}
+
 .links__nav {
     display: flex;
 }
@@ -65,6 +69,10 @@ body {
     font-weight: 400;
     line-height: 23.7px;
     text-align: left;
+}
+
+#open-modal-button-header:hover {
+    font-weight: 700;
 }
 
 .modal {
@@ -172,6 +180,11 @@ body {
     color: rgba(0, 0, 0, 1);
 }
 
+.site__footer__menu a:hover {
+    font-weight: 700;
+}
+
+
 /* Hero Section */
 .hero-image {
     background-image: url("http://nathalie-mota.local/wp-content/uploads/2024/09/samantha-gades-fIHozNWfcvs-unsplash-1.png");
@@ -196,4 +209,101 @@ body {
     color: rgba(255, 255, 255, 0);
     margin: 0;
     -webkit-text-stroke: 2px #fff;
+}
+
+/* Single-photo Template */
+.content-zone {
+    display: flex;
+    flex-direction: column;
+    padding: 38px 144px 0px 144px;
+}
+
+.photo-info-bloc {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.info-bloc {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    padding-bottom: 37px;
+}
+
+.info-bloc h1 {
+    margin: 0;
+    width: 420px;
+    font-family: Space Mono;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 66px;
+    line-height: 58px;
+    text-transform: uppercase;
+}
+
+.info-bloc p {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-family: Space Mono;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 10.73px;
+}
+
+.photo-bloc {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+
+.photo-bloc img {
+    width: 576px;
+}
+
+.actions-bloc {
+    height: 118px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.contact-link p {
+    font-family: Poppins;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+}
+
+.contact-link button {
+    padding: 17px 15px 17px 15px;
+    background-color: rgba(216, 216, 216, 1);
+    width: 47.72%;
+    height: 50px;
+    border-radius: 2px;
+    border: none;
+}
+
+.nav-links {
+    width: 50%;
+    text-align: right;
+}
+
+.nav-links img {
+    width: 25px;
+}
+
+.nav-links .arrow-right {
+    transform: rotateY(-180deg);
 }

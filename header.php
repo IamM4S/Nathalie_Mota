@@ -11,7 +11,7 @@
     <header class="site__header">
         <nav class="logo__nav">
             <a href="<?php echo home_url(); ?>">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/Nathalie-Mota.png" alt="Logo">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Nathalie-Mota.png" alt="Logo">
             </a>
         </nav>
         <nav class="links__nav">
