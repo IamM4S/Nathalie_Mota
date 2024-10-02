@@ -31,6 +31,16 @@ function nm_theme_assets() {
 }
 add_action('wp_enqueue_scripts' , 'nm_theme_assets');
 
+function photos_scripts() {
+
+    wp_enqueue_script('photos', get_template_directory_uri() . '/assets/js/photos.js', '1.0.0', true);
+
+    //Declare AJAX call
+    wp_localize_script('ajax', 'nm_js', array('ajax_url' => admin_url('admin-ajax.php')));
+    }
+    
+    add_action('wp_enqueue_scripts', 'photos_scripts');
+
 register_nav_menus( array (
     'main' => 'Main menu',
     'footer' => 'Footer',

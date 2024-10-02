@@ -187,7 +187,6 @@ body {
 
 /* Hero Section */
 .hero-image {
-    background-image: url("http://nathalie-mota.local/wp-content/uploads/2024/09/samantha-gades-fIHozNWfcvs-unsplash-1.png");
     height: 962px;
     background-position: center;
     background-repeat: no-repeat;
@@ -295,15 +294,97 @@ body {
     border: none;
 }
 
-.nav-links {
+.thumbnail-container {
+    text-align: center; 
+    flex-direction: column;
+    display: flex;
+}
+
+.thumbnail-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.thumbnail-arrows {
+    display: flex;
+    justify-content: space-between;
+}
+
+.thumbnail-container img {
+    max-width: 100%; 
+    max-height: 100%;
+}
+
+.arrow-img-left:hover,
+.arrow-img-right:hover {
+    transform: scale(1.2);
+}
+
+/* Photos Section */
+.photos-section {
+    padding: 80px 144px 0px 144px;
+}
+
+.photo-card {
+    width: 1148px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 20px;
+}
+
+.card-image {
+    width: 564px;
+    height: 495px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-format {
+    display: flex;
     width: 50%;
-    text-align: right;
+    justify-content: space-between;
 }
 
-.nav-links img {
-    width: 25px;
+.date-sort {
+    display: flex;
 }
 
-.nav-links .arrow-right {
-    transform: rotateY(-180deg);
+.filter-section select {
+    width: 260px;
+    height: 43px;
+    border: 1.3px solid rgba(184, 187, 194, 1);
+    border-radius: 8px;
+    padding: 11px 18px 11px 18px;
+}
+
+.charger-plus-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.charger-plus-container button {
+    width: 272px;
+    height: 50px;
+    padding: 8px 15px 8px 15px;
+    border-radius: 2px;
+    border: none;
+    font-family: Space Mono;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17.77px;
 }
