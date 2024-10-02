@@ -296,8 +296,9 @@ body {
 
 .thumbnail-container {
     text-align: center; 
-    flex-direction: column;
+    flex-direction: column-reverse;
     display: flex;
+    align-items: flex-end;
 }
 
 .thumbnail-wrapper {
@@ -310,6 +311,7 @@ body {
 .thumbnail-arrows {
     display: flex;
     justify-content: space-between;
+    column-gap: 30px;
 }
 
 .thumbnail-container img {
@@ -317,9 +319,28 @@ body {
     max-height: 100%;
 }
 
+.arrow-img-left,
+.arrow-img-right {
+    width: 25px;
+}
+
 .arrow-img-left:hover,
 .arrow-img-right:hover {
-    transform: scale(1.2);
+    transform: scale(1.08);
+}
+
+.preview {
+    display: flex;
+    flex-direction: column;width: 80px;
+    height: 80px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.previous-image, .next-image {
+    width: 80px;
+    height: 80px;
+    display: none;
 }
 
 /* Photos Section */

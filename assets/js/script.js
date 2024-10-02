@@ -38,16 +38,25 @@ jQuery(document).ready(function($){
 });
 
 // Navigation Photos
-navigationPhotos($('.arrow-gauche'), $('.previous-image'));
-navigationPhotos($('.arrow-droite'), $('.next-image'));
-
-  function navigationPhotos(arrow, image) {
-    arrow.hover(
-      function () {
-        image.css('opacity', '1');
-      },
-      function () {
-        image.css('opacity', '0');
+jQuery(document).ready(function($){
+    var arrowLeft = $('.arrow-gauche');
+    var arrowRight = $('.arrow-droite');
+    var imagePrev = $('.previous-image');
+    var imageNext = $('.next-image');
+    
+    navigationPhotos(arrowLeft, imagePrev);
+    navigationPhotos(arrowRight, imageNext);
+    
+      function navigationPhotos(arrow, image1, image2) {
+        arrow.hover(
+          function () {
+            image1.css('display', 'flex');
+            image2.css('display', 'flex');
+          },
+          function () {
+            image1.css('display', 'none');
+            image2.css('display', 'none');
+          }
+        );
       }
-    );
-  }
+})

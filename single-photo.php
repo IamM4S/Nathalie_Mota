@@ -22,65 +22,33 @@
             <button id="open-modal-button">Contact</button>
         </div>
 
-        <div class="nav-links">
-            <?php
-            // Récupère l'ID de la publication actuelle.
-            $current_post_id = get_the_ID();
-
-            // Récupère toutes les publications de type 'photo'.
-            $args = array(
-                'post_type' => 'photo',
-                'posts_per_page' => -1,
-                'order' => 'ASC',
-            );
-            $all_photo_posts = get_posts($args);
-
-            // Trouve l'index de la publication actuelle dans le tableau de toutes les publications de photos.
-            $current_post_index = array_search($current_post_id, array_column($all_photo_posts, 'ID'));
-
-            // Calcule les index des publications précédentes et suivantes.
-            $prev_post_index = $current_post_index - 1;
-            $next_post_index = $current_post_index + 1;
-
-            // Récupère les publications précédentes et suivantes.
-            $prev_post = ($prev_post_index >= 0) ? $all_photo_posts[$prev_post_index] : end($all_photo_posts);
-            $next_post = ($next_post_index < count($all_photo_posts)) ? $all_photo_posts[$next_post_index] : reset($all_photo_posts);
-
-            $prev_permalink = get_permalink($prev_post);
-            $next_permalink = get_permalink($next_post);
-
-            // Récupère les miniatures des publications précédentes et suivantes.
-
-            $prev_thumbnail = get_the_post_thumbnail($prev_post, 'thumbnail');
-            $next_thumbnail = get_the_post_thumbnail($next_post, 'thumbnail');
-            ?>
-
-            <!-- Conteneur de miniatures individuelles -->
-            <div class="thumbnail-container">
-                <div class="thumbnail-wrapper">
-                    <!-- Initialement, le contenu de la miniature sera vide -->
-                    <div class="preview">
-                        <img class="previous-image" src="<?php echo $prevThumbnail; ?>" alt="Prévisualisation image précédente">
-                    </div>
-                    <div class="preview">
-                        <img class="next-image" src="<?php echo $nextThumbnail; ?>" alt="Prévisualisation image suivante">
-                    </div>
-                </div>
-                <div class="thumbnail-arrows">
-                    <a href="<?php echo esc_url($prev_permalink); ?>" class="arrow-link" data-thumbnail="<?php echo esc_url(get_the_post_thumbnail_url($prev_post, 'thumbnail')); ?>" id="prev-arrow-link">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-left.png" alt="Précédent" class="arrow-img-left arrow-gauche" id="prev-arrow" />
-                    </a>
-                    <a href="<?php echo esc_url($next_permalink); ?>" class="arrow-link" data-thumbnail="<?php echo esc_url(get_the_post_thumbnail_url($next_post, 'thumbnail')); ?>" id="next-arrow-link">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-right.png" alt="Suivant" class="arrow-img-right arrow-droite" id="next-arrow" />
-                    </a>
-                </div>
-            </div>
+        <div class="interaction-photo__navigation thumbnail-container">
+          <?php
+                    $prevPost = get_previous_post();
+                    $nextPost = get_next_post();
+                ?>
+          <div class="arrows thumbnail-arrows">
+          <?php if (!empty($prevPost)) {
+                        $prevThumbnail = get_the_post_thumbnail_url( $prevPost->ID );
+                        $prevLink = get_permalink($prevPost); ?>
+          <a href="<?php echo $prevLink; ?>">
+            <img class="arrow-img-left arrow-gauche" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-left.png" alt="Flèche pointant vers la gauche" />
+          </a>
+          <?php } else { ?>
+          <img style="opacity:0; cursor: auto;" class="arrow " src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-left.png" />
+          <?php } if (!empty($nextPost)) {
+                        $nextThumbnail = get_the_post_thumbnail_url( $nextPost->ID );
+                        $nextLink = get_permalink($nextPost); ?>
+          <a href="<?php echo $nextLink; ?>">
+          <img class="arrow-img-right arrow-droite" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-right.png" alt="Flèche pointant vers la droite" />
+          </a>
+          <?php } ?>
+        </div>
+        <div class="preview">
+          <img class="previous-image" src="<?php echo $prevThumbnail; ?>" alt="Prévisualisation image précédente">
+          <img class="next-image" src="<?php echo $nextThumbnail; ?>" alt="Prévisualisation image suivante">
         </div>
     </div>
-
-    </div>
-
-    
 
 </section>
 
