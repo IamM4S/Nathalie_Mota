@@ -61,6 +61,8 @@
         <?php include get_template_directory() . '/template-parts/photo-block.php'; ?>
     </div>
 
+    
+
   </div>
 
 </section>

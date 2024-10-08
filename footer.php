@@ -1,3 +1,6 @@
+<div class="lightbox"></div> <!-- On a juste besoin d'ajouter ça ! -->
+
+
     <footer class="site__footer">
         <?php 
             wp_nav_menu( 

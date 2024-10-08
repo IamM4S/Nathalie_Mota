@@ -268,6 +268,8 @@ body {
     display: flex;
     justify-content: space-between;
     gap: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    padding-bottom: 7px;
 }
 
 .contact-link {
@@ -305,7 +307,7 @@ body {
     width: 80px;
     height: 80px;
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 10px; 
 }
 
 .thumbnail-arrows {
@@ -343,13 +345,48 @@ body {
     display: none;
 }
 
+/* Recommendations Section */
+.recommandations {
+    padding: 90px 144px 0px 144px;
+}
+
+.recommandations h3 {
+    font-style: Space Mono;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26.66px;
+}
+
+.image-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.related-image {
+    width: 564px;
+    height: 495px;
+}
+
+.image-wrapper {
+    width: 39.167vw;
+    height: auto;
+}
+
+.image-wrapper img {
+    width: 564px;
+    height: 495px;
+}
+
 /* Photos Section */
 .photos-section {
     padding: 80px 144px 0px 144px;
+    width: 79.722vw;
 }
 
 .photo-card {
-    width: 1148px;
+    width: 79.722vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -392,13 +429,13 @@ body {
     padding: 11px 18px 11px 18px;
 }
 
-.charger-plus-container {
+.view-all-button {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-.charger-plus-container button {
+.view-all-button button {
     width: 272px;
     height: 50px;
     padding: 8px 15px 8px 15px;
@@ -408,4 +445,110 @@ body {
     font-weight: 400;
     font-size: 12px;
     line-height: 17.77px;
+    cursor: pointer;
+}
+
+/* Photo Block */
+.custom-post-thumbnails {
+    margin: 0 auto;  /* Centre contenu horizontalement */
+    text-align: center; 
+    /*padding: 20px;*/
+}
+
+.thumbnail-container-accueil {
+    display: flex;  /* Flexbox pour les éléments enfants */
+    flex-wrap: wrap;  /* Passer à la ligne lorsque l'espace est insuffisant */
+    justify-content: space-between;  /* Espace entre les éléments de manière égale */
+    margin-top: 20px;  
+    width: 79.722vw;
+}
+
+.thumbnail-wrapper {
+    width: 39.167vw;
+    height: auto;
+    position: relative;  /* Établit un contexte de positionnement pour les éléments enfants */
+    overflow: hidden;  /* Cache le contenu débordant de la zone définie */
+    padding-bottom: 100%; 
+}
+
+.thumbnail-wrapper img {
+    position: absolute; 
+    top: 0;  /* Aligne l'image en haut */
+    left: 0;  /* Aligne l'image à gauche */
+    width: 100%; 
+    height: 100%;  
+    object-fit: cover;  /* Couvrir tout l'espace sans déformation */
+}
+
+.thumbnail-overlay {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.6); 
+    opacity: 0;  
+    display: flex;  
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;  
+    transition: opacity 0.3s;  /* Transition d'opacité avec une durée */
+}
+
+.thumbnail-wrapper:hover .thumbnail-overlay {
+    opacity: 1;  /* Survolé, l'overlay devient opaque */
+}
+
+.thumbnail-overlay img {
+    width: 46px; 
+    height: 32px;  
+    position: absolute;  
+    top: 50%; 
+    left: 50%;  
+    transform: translate(-50%, -50%);  /* Centre l'image */
+}
+
+.fullscreen-icon {
+    color: white;  
+    position: absolute;  
+    top: 10px;  
+    right: 10px;
+}
+
+.photo-info {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.photo-info-left,
+.photo-info-right {
+    width: 60%;
+}
+
+/* Lightbox */
+.lightbox {
+    display: none; /* cachée par défaut */
+    position: fixed; /* fixée et qui prend tout l'écran */
+    z-index: 1000; /* Pour être sûr de passer au dessus du reste */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.7); /* noire avec transparence */
+    background-size: contain; /* l'image occupe tout l'espace disponible */
+    background-repeat: no-repeat; 
+    background-position: center;
+    cursor: pointer; /* Le curseur a la même forme que sur un lien */
 }
