@@ -31,9 +31,10 @@
     }
 
 
+
 // Contact Form Pre-fill
 jQuery(document).ready(function($){
-    var reference = $('#reference-photo').text();
+    var reference = $('#ph-reference').text();
     $("#pre-fill").val(reference);
 });
 

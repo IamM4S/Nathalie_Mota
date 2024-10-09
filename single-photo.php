@@ -4,16 +4,73 @@
 
     <div class="photo-info-bloc">
         <div class="info-bloc">
-            <h1><?php the_title() ?></h1>
-            <p>Référence : <span id="reference-photo"><?php echo get_field('reference'); ?></span></p>
-            <p>Catégorie : <?php echo strip_tags(get_the_term_list($post->ID, 'categorie')); ?></p>
-            <p>Format : <?php echo strip_tags(get_the_term_list($post->ID, 'format')); ?></p>
-            <p>Type : <?php echo get_field('type'); ?></p>
-            <p>Année : <?php echo strip_tags(get_the_term_list($post->ID, 'annee')); ?></p>
+
+            <?php
+                // Référence de la photo
+                // Récupère la valeur du champ personnalisé 'reference_photo' et l'affiche s'il existe.
+                $reference_photo = get_field('reference');
+                if ($reference_photo) {
+                    echo '<p>Référence : <span id="ph-reference">' . esc_html($reference_photo) . '</span></p>';
+                }
+
+                // Catégories de la photo
+                // Récupère les catégories associées à la photo actuelle.
+                $categories = get_the_terms(get_the_ID(), 'categorie');
+                $current_category_slugs = array(); // Initialise un tableau vide pour les slugs de catégorie.
+
+                if ($categories) {
+                    // Parcourir les catégories et stocker leurs slugs dans le tableau.
+                    foreach ($categories as $category) {
+                        $current_category_slugs[] = $category->slug;
+                    }
+                }
+
+                if ($categories) {
+                    // Si des catégories existent, les afficher.
+                    echo '<p>Catégorie : <span id="ph-category">';
+                    $category_names = array();
+                    foreach ($categories as $category) {
+                        $category_names[] = esc_html($category->name);
+                    }
+                    echo implode(', ', $category_names); // Utiliser implode pour joindre les noms de catégorie par une virgule.
+                    echo '</span></p>';
+                }
+
+                // Format de la photo
+                // Récupère les termes de format associés à la photo actuelle.
+                $format_terms = get_the_terms(get_the_ID(), 'format');
+                if ($format_terms) {
+                    // Si des termes de format existent, les afficher.
+                    echo '<p>Format : ';
+                    $format_names = array();
+                    foreach ($format_terms as $format_term) {
+                        $format_names[] = esc_html($format_term->name);
+                    }
+                    echo implode(', ', $format_names); // Utiliser implode pour joindre les noms de format par une virgule.
+                    echo '</p>';
+                }
+
+                // Type de la photo
+                // Récupère la valeur du champ personnalisé 'type_de_photo' et l'affiche s'il existe.
+                $type_de_photo = get_field('type');
+                if ($type_de_photo) {
+                    echo '<p>Type : ' . esc_html($type_de_photo) . '</p>';
+                }
+
+                // L'année de capture
+                // Récupère l'année de capture et l'affiche si elle existe.
+                $date_capture = get_the_date('Y');
+                if ($date_capture) {
+                    echo '<p>Année : ' . esc_html($date_capture) . '</p>';
+                }
+                ?>
+            </div>
+            <div class="photo-bloc">
+                <img src="<?php echo get_field('photo'); ?>"/>
+            </div>
         </div>
-        <div class="photo-bloc">
-            <img src="<?php echo get_field('photo'); ?>"/>
         </div>
+
     </div>
 
     <div class="actions-bloc">
@@ -31,16 +88,16 @@
           <?php if (!empty($prevPost)) {
                         $prevThumbnail = get_the_post_thumbnail_url( $prevPost->ID );
                         $prevLink = get_permalink($prevPost); ?>
-          <a href="<?php echo $prevLink; ?>">
+          <a href="<?php echo $prevLink; ?>" id="prev-arrow-link">
             <img class="arrow-img-left arrow-gauche" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-left.png" alt="Flèche pointant vers la gauche" />
           </a>
           <?php } else { ?>
-          <img style="opacity:0; cursor: auto;" class="arrow " src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-left.png" />
+          
           <?php } if (!empty($nextPost)) {
                         $nextThumbnail = get_the_post_thumbnail_url( $nextPost->ID );
                         $nextLink = get_permalink($nextPost); ?>
-          <a href="<?php echo $nextLink; ?>">
-          <img class="arrow-img-right arrow-droite" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-right.png" alt="Flèche pointant vers la droite" />
+          <a href="<?php echo $nextLink; ?>" id="next-arrow-link">
+            <img class="arrow-img-right arrow-droite" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-right.png" alt="Flèche pointant vers la droite" />
           </a>
           <?php } ?>
         </div>
@@ -59,31 +116,37 @@
         <div class="custom-post-thumbnails">
             <input type="hidden" name="page" value="1">
             <div class="thumbnail-container-accueil">
-        <?php
-        // Arguments | Requête pour les publications personnalisées
-        $args_custom_posts = array(
-            'post_type' => 'photo',          // Type de publication personnalisée (photo) 
-            'posts_per_page' => 2,          // Nombre de publications à afficher par page
-            'orderby' => 'date',             // Tri des publications par date
-            'order' => 'DESC',               // Ordre de tri descendant - (de la plus récente à la plus ancienne).
-        );        
+            <?php
+            // Récupère deux photos aléatoires de la même catégorie que la photo actuelle.
+            $args_related_photos = array(
+                'post_type' => 'photo',
+                'posts_per_page' => 2,
+                'orderby' => 'rand',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'categorie',
+                        'field' => 'slug',
+                        'terms' => $current_category_slugs, // Utilise le slug de la catégorie de la photo actuelle
+                    ),
+                ),
+            );
 
-        $custom_posts_query = new WP_Query($args_custom_posts);
+            $related_photos_query = new WP_Query($args_related_photos);
 
-        // Boucle | Parcourir les publications personnalisées
-        while ($custom_posts_query->have_posts()) :
-            $custom_posts_query->the_post();
-        ?>
+            while ($related_photos_query->have_posts()) :
+                $related_photos_query->the_post();
+            ?>
         <div class="custom-post-thumbnail">
-            <a href="<?php the_permalink(); ?>">
                 <?php if (has_post_thumbnail()) : ?>
                     <div class="thumbnail-wrapper">
-                        <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail(); ?>
                             <!-- Section | Overlay Catalogue -->
                             <div class="thumbnail-overlay">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt="Icône de l'œil"> <!-- Icône de l'œil | Informations sur la photo -->
-                                <i class="fas fa-expand fullscreen-icon"></i><!-- Icône plein écran -->
+                                <a href="<?php the_permalink(); ?>">
+                                    <img class="eye-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt="Icône de l'œil"> <!-- Icône de l'œil | Informations sur la photo -->
+                                </a>
+                                
+                                <?php include get_template_directory() . '/template-parts/lightbox.php';?><!-- Icône plein écran -->
                                 <?php
                                 // Récupère la référence et la catégorie de l'image associée.
                                 $related_reference_photo = get_field('reference');   // Récupère la référence de la photo
@@ -106,10 +169,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
                     </div>
                 <?php endif; ?>
-            </a>
         </div>
         <?php endwhile; ?>
 

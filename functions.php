@@ -1,4 +1,7 @@
 <?php
+// Disable Image Scaling
+add_filter('big_image_size_threshold', '__return_false');
+
 
 // Add support for featured images
 add_theme_support( 'post-thumbnails' );
@@ -130,15 +133,16 @@ function nm_request_photos() {
              // Contenu | Article - Même format que dans "photo-block.php"
             ?>
             <div class="custom-post-thumbnail">
-                <a href="<?php the_permalink(); ?>">
                     <?php if (has_post_thumbnail()) : ?>
                         <div class="thumbnail-wrapper">
-                            <a href="<?php the_permalink(); ?>">
                                 <?php the_post_thumbnail(); ?>
                                 <!-- Section | Overlay Catalogue -->
                                 <div class="thumbnail-overlay">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt="Icône de l'œil"> <!-- Icône de l'œil | Information Photo -->
-                                    <i class="fas fa-expand fullscreen-icon"></i><!-- Icône de plein écran -->
+                                    <a href="<?php the_permalink(); ?>">
+                                        <img class="eye-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt="Icône de l'œil"> <!-- Icône de l'œil | Information Photo -->
+                                    </a>
+                                    
+                                    <?php include get_template_directory() . '/template-parts/lightbox.php';?><!-- Icône de plein écran -->
                                     <?php
                                     // Récupère la référence et la catégorie de l'image associée
                                     $related_reference_photo = get_field('reference');
@@ -160,10 +164,8 @@ function nm_request_photos() {
                                         </div>
                                     </div>
                                 </div>
-                            </a>
                         </div>
                     <?php endif; ?>
-                </a>
             </div>
         <?php
             // Fin de la structure du contenu de l'article

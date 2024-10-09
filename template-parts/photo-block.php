@@ -18,15 +18,16 @@
             $custom_posts_query->the_post();
         ?>
         <div class="custom-post-thumbnail">
-            <a href="<?php the_permalink(); ?>">
                 <?php if (has_post_thumbnail()) : ?>
                     <div class="thumbnail-wrapper">
-                        <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail(); ?>
                             <!-- Section | Overlay Catalogue -->
                             <div class="thumbnail-overlay">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt="Icône de l'œil"> <!-- Icône de l'œil | Informations sur la photo -->
-                                <i class="fas fa-expand fullscreen-icon"></i><!-- Icône plein écran -->
+                                <a href="<?php the_permalink(); ?>">
+                                    <img class="eye-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt="Icône de l'œil"> <!-- Icône de l'œil | Informations sur la photo -->
+                                </a>
+                                
+                                <?php include get_template_directory() . '/template-parts/lightbox.php';?><!-- Icône plein écran -->
                                 <?php
                                 // Récupère la référence et la catégorie de l'image associée.
                                 $related_reference_photo = get_field('reference');   // Récupère la référence de la photo
@@ -49,10 +50,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
                     </div>
                 <?php endif; ?>
-            </a>
         </div>
         <?php endwhile; ?>
 

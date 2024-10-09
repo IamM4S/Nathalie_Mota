@@ -1,17 +1,11 @@
-<!-- Section | Lightbox Photo -->
-<div class='modal-container'>
-    <!-- Bouton fermer -->
-    <span class="btn-close">X</span>
-    <!-- Fleche -->
-    <div class="left-arrow"></div>
-    <div>
-        <!-- Image | Information de la Photo -->
-        <img src="" class="middle-image" />
-        <div class="info-photo">
-            <span id="modal-reference"></span>
-            <span id="modal-category"></span>
-        </div>
-    </div>
-    <!-- Fleche -->
-    <div class="right-arrow"></div>
+<!-- Section | Photo -->
+<i class="fas fa-expand fullscreen-icon"></i><!-- Fullscreen icon -->
+
+<div class="lightbox">
+  <button class="lightbox__close">Fermer</button>
+  <button class="lightbox__next">Suivant</button>
+  <button class="lightbox__prev">Précédent</button>
+  <div class="lightbox__container">
+    <img src="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0]; ?>" alt="">
+  </div>
 </div>

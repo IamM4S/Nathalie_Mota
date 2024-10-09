@@ -1,4 +1,3 @@
-<div class="lightbox"></div> <!-- On a juste besoin d'ajouter ça ! -->
 
 
     <footer class="site__footer">
