@@ -1,25 +1,3 @@
-
-    
-    // Gestion de la fermeture de la boîte modale lorsque l'on clique sur le bouton de fermeture
-    jQuery('.btn-close').click(function(e){
-        // Retire la classe 'opened' de la boîte modale pour la fermer
-        jQuery('.modal-container').removeClass('opened');
-    })
-    
-    // Obtient la chaîne de requête depuis l'URL actuelle
-    var queryString = window.location.search;
-    
-    // Crée un objet URLSearchParams pour analyser les paramètres de la requête
-    var searchParams = new URLSearchParams(queryString);
-    
-    // Obtient la valeur du paramètre 'modal'
-    var modal = searchParams.get('modal');
-    
-    // Si 'modal' est présent dans l'URL, simule un clic sur une image pour ouvrir la boîte modale
-    if( modal ){
-        jQuery('.right-container img').click();
-    }
-
 // CHARGER PLUS (PHOTOS) + FILTRES (FUNCTIONS.PHP)
 let loading = false; // Indique si le chargement est en cours ou non
 const $loadMoreButton = jQuery('#load-more-posts'); // Sélectionne le bouton "Charger plus"

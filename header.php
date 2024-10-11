@@ -9,11 +9,13 @@
 
 <body>
     <header class="site__header">
+        
         <nav class="logo__nav">
             <a href="<?php echo home_url(); ?>">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Nathalie-Mota.png" alt="Logo">
             </a>
         </nav>
+
         <nav class="links__nav">
             <?php 
                 wp_nav_menu( 
@@ -28,4 +30,13 @@
                 <li class="btn-modale"><?php include get_template_directory() . '/template-parts/contact-modal.php';?></li>
             </ul>
         </nav>
+        
+        <nav class="mobile__links__nav">
+            <span>
+                <?php include get_template_directory() . '/template-parts/mobile-menu.php';?>
+            </span>
+        </nav>
+        
+
     </header>
+    <main id="main-content">

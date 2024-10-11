@@ -1,6 +1,6 @@
+</main>
 
-
-    <footer class="site__footer">
+    <footer class="site__footer" id="footer-content">
         <?php 
             wp_nav_menu( 
                 array( 

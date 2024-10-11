@@ -1,3 +1,45 @@
+// MENU BURGER MOBILE
+var headerMenu = document.getElementById('myMenu');
+var menuBtn = document.getElementById("open-fullscreen-menu-button");
+var closeMenuBtn = document.getElementById("close-fullscreen-menu-button");
+var mainContent = document.getElementById("main-content");
+var originalContent = mainContent.innerHTML;
+var mobileMenuContent = document.getElementById("mobile-menu-content").innerHTML;
+var footerContent = document.getElementById("footer-content");
+
+var mobileHeaderModal = document.getElementsByClassName('modal');
+var mobileHeaderBtn = document.getElementsByClassName("btn-modale");
+
+// Show modal header
+menuBtn.onclick = function() {
+  headerMenu.style.display = "block";
+  menuBtn.style.display = "none";
+  mainContent.innerHTML = mobileMenuContent;
+  mainContent.classList.add("mobile-menu-opened");
+  footerContent.style.display = "none";
+
+}
+
+closeMenuBtn.onclick = function() {
+  headerMenu.style.display = "none";
+  menuBtn.style.display = "block";
+  mainContent.innerHTML = originalContent;
+  mainContent.classList.remove("mobile-menu-opened");
+  footerContent.style.display = "block";
+}
+
+// Show modal header
+mobileHeaderBtn.onclick = function() {
+  mobileHeaderModal.style.display = "block";
+}
+
+// Close the modal header by clicking outside
+window.onclick = function(event) {
+  if (event.target == headerModal) {
+      headerModal.style.display = "none";
+  }
+}
+
     // MODALE CONTACT - HEADER
     var headerModal = document.getElementById('myModal');
     var headerBtn = document.getElementById("open-modal-button-header");

@@ -4,7 +4,7 @@
 
     <div class="photo-info-bloc">
         <div class="info-bloc">
-
+            <h1><?php the_title(); ?></h1>
             <?php
                 // Référence de la photo
                 // Récupère la valeur du champ personnalisé 'reference_photo' et l'affiche s'il existe.
